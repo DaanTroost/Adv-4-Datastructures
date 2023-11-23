@@ -10,6 +10,7 @@ import java.util.*;
  */
 public class StudentResult {
     private Map<Integer, List<String>> studentResults = new HashMap<>();
+    private Vakken vakkenLijst = new Vakken();
     public void readFromFile(String filename) {
         Path filepath = Path.of(String.format("src/resources/%s", filename));
 
@@ -30,11 +31,27 @@ public class StudentResult {
 
     }
 
+    public Set<Integer> getStudentNumbers(){
+        return studentResults.keySet();
+    }
+
     public Map<Integer,List<String>> getStudentResults(){
         return studentResults;
     }
 
-    public List<String> getStudentResults(int studentNumber){
+    public List<String> getCompletedCoursesForStudent(int studentNumber){
         return studentResults.get(studentNumber);
+    }
+
+    public int getPointsEarnedByStudent(int studentNumber, Vakken vakkenLijst){
+        int pointsEarned = 0;
+        Map<String, Integer> creditsPerCourse = vakkenLijst.getCourseCredits();
+        List<String> completedCourses = getCompletedCoursesForStudent(studentNumber);
+
+        for (String course : completedCourses) {
+            pointsEarned += creditsPerCourse.get(course);
+        }
+
+        return pointsEarned;
     }
 } // end of StudentResult
