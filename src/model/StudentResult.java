@@ -51,7 +51,6 @@ public class StudentResult {
         for (String course : completedCourses) {
             pointsEarned += creditsPerCourse.get(course);
         }
-
         return pointsEarned;
     }
 } // end of StudentResult

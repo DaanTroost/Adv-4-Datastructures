@@ -38,7 +38,7 @@ public class datastructuresLauncher {
                         creditsPerCourse.get(completedCourse)
                         );
             }
-            System.out.printf("Student %d has completed %3d courses, worth %2d points.\n",
+            System.out.printf("Student %d has completed %3d courses,\t\t worth %2d credits.\n",
                     studentNumber,
                     completedCourses.size(),
                     earnedCredits
